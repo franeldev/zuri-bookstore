@@ -75,7 +75,7 @@ app.get('/books/:mid', (req, res) =>{
       return res.status(500).json({ message: err })
     }
     else if (!book) {
-      return res.status(404).json({ message: err })
+      return res.status(404).json({ message: "book not found" })
     }
      else {
       return res.status(200).json({ book })
