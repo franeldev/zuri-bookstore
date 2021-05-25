@@ -21,3 +21,16 @@ NodeJS Bookstore App
 * purchaseCount
 * imageUrl
 * description
+
+
+**TODO-PART2**
+* Create routes
+* Update Folder Structure
+* Install nodemon
+
+src
+  |-- controllers
+  |-- database
+  |-- models
+  |-- routes
+  |__ index.js
