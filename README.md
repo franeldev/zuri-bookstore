@@ -30,10 +30,10 @@ NodeJS Bookstore App
 
 src
   |-- controllers => contains the request & response functions
-  |-- database
-  |-- models
-  |-- routes
-  |__ index.js
+  |-- database => database (in our case, we are using mongoose) setup and connection
+  |-- models => database schema file
+  |-- routes => application routes
+  |__ index.js => entry file
 views
 tests
 config
