@@ -2,7 +2,7 @@
   "name": "zuri-bookstore",
   "version": "1.0.0",
   "description": "NodeJS Bookstore App",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
