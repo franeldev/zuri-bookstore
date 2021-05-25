@@ -29,8 +29,15 @@ NodeJS Bookstore App
 * Install nodemon
 
 src
-  |-- controllers
+  |-- controllers => contains the request & response functions
   |-- database
   |-- models
   |-- routes
   |__ index.js
+views
+tests
+config
+services
+middlewares
+utilities
+helpers
