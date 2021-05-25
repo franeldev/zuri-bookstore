@@ -69,7 +69,7 @@ app.get('/books', (req, res) =>{
   // send response tom client
 })
 // GET request to /books:id to fetch a single book
-app.get('/books/:mid', (req, res) =>{
+app.get('/books/:id', (req, res) =>{
   Book.findById( req.params.id, (err, book) =>{
     if (err) {
       return res.status(500).json({ message: err })
