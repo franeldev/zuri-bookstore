@@ -45,3 +45,6 @@ helpers
 **TODO-PART3**
 * Schema Validation
 * Search Feature
+  
+  Setting the category to a range of values set for validation
+  
