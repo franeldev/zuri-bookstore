@@ -44,3 +44,4 @@ helpers
 
 **TODO-PART3**
 * Schema Validation
+* Search Feature
