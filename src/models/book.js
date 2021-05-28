@@ -8,7 +8,10 @@ const bookSchema = new mongoose.Schema({
   },
   author: String,
   description: String,
-  category: String,
+  category: {
+    type: String,
+    enum: ["fiction", "non-fiction", "comics", "others"]
+  },
   purchaseCount: Number,
   imageUrl: String,
   tags: Array,
