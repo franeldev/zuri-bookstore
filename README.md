@@ -46,5 +46,6 @@ helpers
 * Schema Validation
 * Search Feature
   
-  Setting the category to a range of values set for validation
+  Setting the category to a range of values set for validation:
   
+  Categories: fiction, non-fiction, comics, others
