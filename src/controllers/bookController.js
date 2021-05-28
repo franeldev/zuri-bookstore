@@ -32,11 +32,9 @@ exports.fetchBooks = (req, res) =>{
   }
   // create search queries to have field from which one can filter the data to be return by the API so;
   // check req.query for filters,
-  console.log(conditions);
-  console.log(req.query);
   // and if there are filters, use them in Model.find query
   // fetch all books
-  Book.find(req.query, (err, books) => {
+  Book.find(conditions, (err, books) => {
     if (err) {
       return res.status(500).json({ message: err })
     } else {
