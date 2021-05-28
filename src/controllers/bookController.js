@@ -24,12 +24,19 @@ exports.createNewBook = (req, res) => {
 
 exports.fetchBooks = (req, res) =>{
   let conditions = {};
+  if(req.query.category) {
+    conditions.category = req.query.category
+  }
+  if(req.query.author) {
+    conditions.author = req.query.author
+  }
   // create search queries to have field from which one can filter the data to be return by the API so;
   // check req.query for filters,
+  console.log(conditions);
   console.log(req.query);
   // and if there are filters, use them in Model.find query
   // fetch all books
-  Book.find({ category: 'friction', author: 'John Smith' }, (err, books) => {
+  Book.find(req.query, (err, books) => {
     if (err) {
       return res.status(500).json({ message: err })
     } else {
