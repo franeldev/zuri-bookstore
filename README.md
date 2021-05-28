@@ -46,6 +46,6 @@ helpers
 * Schema Validation
 * Search Feature
   
-  Setting the category to a range of values set for validation:
+  Setting the category to a range of values set for validation. It can be enforce on the schema by adding a property called, Enum:
   
   Categories: fiction, non-fiction, comics, others
