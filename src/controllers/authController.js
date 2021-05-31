@@ -14,6 +14,10 @@ exports.registerNewUser = (req, res) {
       firstname: req.body.firstname,
       lastname: req.body.lastname,
       username: req.body.lastname
+    }, (err, newUser) => {
+      if(err) {
+        return res.status(500).json({ err })
+      }
     })
   })
   // create a new user
