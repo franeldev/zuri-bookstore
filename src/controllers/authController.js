@@ -7,6 +7,14 @@ exports.registerNewUser = (req, res) {
     if(err) {
       return res.status(500).json({ err })
     }
+    if(existingUser) {
+      return res.status(400).json({ message: "a user with this username already exists" })
+    }
+    User.create({
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      username: req.body.lastname
+    })
   })
   // create a new user
   // hash user passsword
