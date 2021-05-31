@@ -49,3 +49,18 @@ helpers
   Setting the category to a range of values set for validation. It can be enforce on the schema by adding a property called, Enum:
   
   Categories: fiction, non-fiction, comics, others
+
+  **TODO-PART4**
+  * Register route
+    * Create a new user
+    * Hash user's password 
+    * Create a token for user
+    * Send token to a user
+
+
+  * Login route
+    * Checkk if user exists
+    * Compare user's password with stored hash
+    * Create a token
+    * Send token to user
+  * authenticate book route (A user not login wont have access to the book route) 
