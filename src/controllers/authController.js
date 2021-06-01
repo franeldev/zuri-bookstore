@@ -21,10 +21,21 @@ exports.registerNewUser = (req, res) => {
       if(err) {
         return res.status(500).json({ err })
       }
+      // hash user passsword
+      bcrypt.genSalt(10, (err, salt) => {
+        if(err) {
+          return res.status(500).json({ err })
+        }
+        bcrypt.hash(req.body.password, salt, (err, hashedPassword) => {
+          if(err) {
+            return res.status(500).json({ err })
+          }
+          // save password to db
+        })
+      })
     })
   })
-  // hash user passsword
-  // save password to db
+  
   // create jwt for user
   // send the token to user
 }
