@@ -1,6 +1,8 @@
 const User = require('../models/users');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const secret = 'verySecureSECRET';
+const expiry = 3600;
 
 exports.registerNewUser = (req, res) => {
   // fetch user details from req body
@@ -31,11 +33,17 @@ exports.registerNewUser = (req, res) => {
             return res.status(500).json({ err })
           }
           // save password to db
+          newUser.password = hashedPassword;
+          newUser.save((err, savedUser) => {
+            if(err) {
+              return res.status(500).json({ err })
+            }
+            // create jwt for user
+            // send the token to user
+          })
         })
       })
     })
   })
   
-  // create jwt for user
-  // send the token to user
 }
