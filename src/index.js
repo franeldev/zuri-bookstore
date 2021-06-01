@@ -1,8 +1,9 @@
 const express = require('express');
 const app = express();
 const port = 4000;
-const dbSetup = require('./database/setup')
-const bookRoutes = require('./routes/boookRoutes')
+const dbSetup = require('./database/setup');
+const bookRoutes = require('./routes/boookRoutes');
+const authRoutes = require('./routes/authRoutes');
 
 app.use(express.json());
 
