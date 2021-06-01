@@ -16,9 +16,9 @@ exports.registerNewUser = (req, res) => {
     }
     // create a new user
     User.create({
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      username: req.body.lastname
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      username: req.body.username
     }, (err, newUser) => {
       if(err) {
         return res.status(500).json({ err })
@@ -39,7 +39,22 @@ exports.registerNewUser = (req, res) => {
               return res.status(500).json({ err })
             }
             // create jwt for user
-            // send the token to user
+            jwt.sign(
+              {
+                id: newUser._id,
+                username: newUser.username,
+                firstName: newUser.firstName,
+                lastName: newUser.lastName
+              }, secret, {expiresIn: expiry}, (err, token) => {
+                if(err) {
+                  return res.status(500).json({ err })
+                }
+                // send the token to user
+                return res.status(200).json({
+                  message: "user registration successful",
+                  token
+                })
+              })
           })
         })
       })
