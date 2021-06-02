@@ -16,6 +16,9 @@ exports.seedAdmin = () => {
       role: "admin"
     }, (err, user) => {
       if(err) throw err;
+      bcrypt.genSalt(10, (err, salt) => {
+        if(err) throw err;
+      })
     })
   })
 }
