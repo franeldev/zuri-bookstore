@@ -11,7 +11,10 @@ exports.seedAdmin = () => {
     User.create({
       firstName: "Book",
       lastName: "Goblin",
-      username: "bookgoblin"
+      username: "bookgoblin",
+      role: "admin"
+    }, (err, user) => {
+      if(err) throw err;
     })
   })
 }
