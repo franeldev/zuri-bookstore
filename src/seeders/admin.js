@@ -1,4 +1,5 @@
 const User = require('../models/users');
+const bcrypt =  require('bcryptjs');
 
 exports.seedAdmin = () => {
   // check if there is an admin account
