@@ -72,7 +72,7 @@ exports.loginUser = (req, res) => {
     if(!foundUser) {
       return res.status(401).json({ message: "incorrect username" })
     } else {
-      return res.status(200).json({ message: "foundUser" })
+      return res.status(200).json({ foundUser })
     }
   })
   // check if password is correct
