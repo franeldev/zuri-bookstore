@@ -71,9 +71,9 @@ exports.loginUser = (req, res) => {
     }
     if(!foundUser) {
       return res.status(401).json({ message: "incorrect username" })
-    } else {
-      return res.status(200).json({ foundUser })
     }
+    let match = bcrypt.compareSync(req.body.password, foundUser.password);
+    return res.json({ match })
   })
   // check if password is correct
   // create a token
