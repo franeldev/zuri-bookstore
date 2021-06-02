@@ -64,3 +64,5 @@ helpers
     * Create a token
     * Send token to user
   * authenticate book route (A user not login wont have access to the book route) 
+  * role-based authentication
+    * d
