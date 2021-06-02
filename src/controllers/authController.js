@@ -85,7 +85,15 @@ exports.loginUser = (req, res) => {
       lastName: foundUser.lastName
     }, secret, {
       expiresIn: expiry
-    }, (err, token))
+    }, (err, token) => {
+      if(err) {
+        return res.status(500).json({ err })
+      }
+      return res.status(200).json({
+        message: "user logged in",
+        token
+      })
+    })
   })
   // send token to the user
 }
