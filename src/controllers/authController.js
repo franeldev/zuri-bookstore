@@ -62,3 +62,18 @@ exports.registerNewUser = (req, res) => {
   })
   
 }
+
+exports.loginUser = (req, res) => {
+  // check if user exist
+  User.findOne({ username: req.body.username }, (err, foundUser) => {
+    if(err) {
+      return res.status(500).json({ err });
+    }
+    if(!foundUser) {
+      return res.status(401).json({ message: "incorrect username" })
+    }
+  })
+  // check if password is correct
+  // create a token
+  // send token to the user
+}
