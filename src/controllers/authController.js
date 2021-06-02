@@ -72,10 +72,20 @@ exports.loginUser = (req, res) => {
     if(!foundUser) {
       return res.status(401).json({ message: "incorrect username" })
     }
+    // check if password is correct
     let match = bcrypt.compareSync(req.body.password, foundUser.password);
-    return res.json({ match })
+    if(!match) {
+      return res.status(401).json({ message: "incoorrect password" })
+    }
+    // create a token
+    jwt.sign({
+      id: foundUser._id,
+      username: foundUser.username,
+      firstName: foundUser.firstName,
+      lastName: foundUser.lastName
+    }, secret, {
+      expiresIn: expiry
+    }, (err, token))
   })
-  // check if password is correct
-  // create a token
   // send token to the user
 }
