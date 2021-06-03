@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const BookCtlr = require('../controllers/bookController');
-const { authenticateUser } = require('../middlewares/authentication');
+const { authenticateUser, checkIfAdmin } = require('../middlewares/authentication');
 
 // POST request to /books to create a new book
-router.post('/books', authenticateUser, BookCtlr.createNewBook)
+router.post('/books', authenticateUser, checkIfAdmin, BookCtlr.createNewBook)
 // GET reuest to /books to fetch all books
 router.get('/books', authenticateUser, BookCtlr.fetchBooks)
 // GET request to /books:id to fetch a single book
