@@ -18,8 +18,7 @@ exports.registerNewUser = (req, res) => {
     User.create({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
-      username: req.body.username,
-      role: foundUser.role
+      username: req.body.username
     }, (err, newUser) => {
       if(err) {
         return res.status(500).json({ err })
@@ -45,7 +44,8 @@ exports.registerNewUser = (req, res) => {
                 id: newUser._id,
                 username: newUser.username,
                 firstName: newUser.firstName,
-                lastName: newUser.lastName
+                lastName: newUser.lastName,
+                role: newUser.role
               }, secret, {expiresIn: expiry}, (err, token) => {
                 if(err) {
                   return res.status(500).json({ err })
