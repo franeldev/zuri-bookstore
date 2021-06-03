@@ -16,12 +16,13 @@ exports.createNewBook = (req, res) => {
 }
 
 exports.fetchBooks = (req, res) =>{
+  console.log(req.user);
   let conditions = {};
-  if(req.query.category) {
-    conditions.category = req.query.category
+  if (req.query.category) {
+      conditions.category = req.query.category
   }
-  if(req.query.author) {
-    conditions.author = req.query.author
+  if (req.query.author) {
+      conditions.author = req.query.author
   }
   // create search queries to have field from which one can filter the data to be return by the API so;
   // check req.query for filters,
@@ -29,9 +30,9 @@ exports.fetchBooks = (req, res) =>{
   // fetch all books
   Book.find(conditions, (err, books) => {
     if (err) {
-      return res.status(500).json({ message: err })
+        return res.status(500).json({ message: err })
     } else {
-      return res.status(200).json({ books })
+        return res.status(200).json({ books })
     }
   })
   // send response tom client
@@ -40,13 +41,13 @@ exports.fetchBooks = (req, res) =>{
 exports.fetchSingleBook = (req, res) =>{
   Book.findById( req.params.id, (err, book) =>{
     if (err) {
-      return res.status(500).json({ message: err })
+        return res.status(500).json({ message: err })
     }
     else if (!book) {
-      return res.status(404).json({ message: "book not found" })
+        return res.status(404).json({ message: "book not found" })
     }
      else {
-      return res.status(200).json({ book })
+        return res.status(200).json({ book })
     }
   })
 }
@@ -75,13 +76,13 @@ exports.updateSingleBook = (req, res) =>{
 exports.deleteSingleBook = (req, res) =>{
   Book.findByIdAndDelete(req.params.id, (err, book) =>{
     if (err) {
-      return res.status(500).json({ message: err })
+        return res.status(500).json({ message: err })
     }
     else if (!book) {
-      res.status(404).json({ message: "book was not found" })
+        res.status(404).json({ message: "book was not found" })
     }
     else {
-      return res.status(200).json({ message: "book deleted successfully" })
+        return res.status(200).json({ message: "book deleted successfully" })
     }
   })
 }
