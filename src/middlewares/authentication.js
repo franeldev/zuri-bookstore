@@ -30,7 +30,7 @@ exports.authenticateUser = (req, res, next) => {
 
 }
 
-exports.checkIfAdmin = (req, rees, next) => {
+exports.checkIfAdmin = (req, res, next) => {
   if (req.user.role !== "admin") {
       return res.status(401).json({ message: "this route is restricted to the admin only" });
   }
