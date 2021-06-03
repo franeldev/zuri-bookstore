@@ -7,6 +7,10 @@ const dbSetup = require('./database/setup');
 const bookRoutes = require('./routes/boookRoutes');
 const authRoutes = require('./routes/authRoutes');
 
+// SEEDERS
+const {seedAdmin} = require('./seeders/admin');
+console.log(seedAdmin());
+
 app.use(express.json());
 
 // SETUP DB
