@@ -6,6 +6,5 @@ exports.authenticateUser = (req, res, next) => {
   next()
   // decode token
   // check if valid
-  // allow user to continue request
+  // allow user to continue with request
 }
-const
