@@ -11,11 +11,21 @@ exports.authenticateUser = (req, res, next) => {
   if (splittedHeader[0] !== "Bearer") {
     return res.status(401).json({ message: "authorization format is Bearer <token>" });
   }
-  let token
+  
+  let token = splittedHeader[1];
 
-
-  next()
-  // decode token
   // check if valid
+
+  jwt.verify(token, secret, (err, decodedToken) => {
+    if (err) return res.status(500).json({ err });
+    if (!decodedToken) {
+      return res.status(500).json({ message: "invallid authorization" });
+    }
+    next();
+    
+  })
+
+
+  // decode token
   // allow user to continue with request
 }
