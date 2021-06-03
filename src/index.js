@@ -4,7 +4,7 @@ const port = 4000;
 const dbSetup = require('./database/setup');
 
 // REQUIRE ROUTES
-const bookRoutes = require('./routes/boookRoutes');
+const bookRoutes = require('./routes/bookRoutes');
 const authRoutes = require('./routes/authRoutes');
 
 // SEEDERS
