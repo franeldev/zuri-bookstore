@@ -82,7 +82,8 @@ exports.loginUser = (req, res) => {
       id: foundUser._id,
       username: foundUser.username,
       firstName: foundUser.firstName,
-      lastName: foundUser.lastName
+      lastName: foundUser.lastName,
+      role: foundUser.role
     }, secret, {
       expiresIn: expiry
     }, (err, token) => {
