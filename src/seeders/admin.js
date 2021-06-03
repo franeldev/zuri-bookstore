@@ -1,5 +1,6 @@
 const User = require('../models/users');
 const bcrypt =  require('bcryptjs');
+let password = "admin123"
 
 exports.seedAdmin = () => {
   // check if there is an admin account
@@ -18,6 +19,14 @@ exports.seedAdmin = () => {
       if(err) throw err;
       bcrypt.genSalt(10, (err, salt) => {
         if(err) throw err;
+        bcrypt.hash(password, salt, (err,hash) => {
+          if(err) throw err
+          user.password = hash;
+          user.save((err, savedUser) => {
+            if(err) throw err 
+            return "admin account created"
+          })
+        })
       })
     })
   })
