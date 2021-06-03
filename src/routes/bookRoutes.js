@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const BookCtlr = require('../controllers/bookController');
-const { authenticateUser } = require('../m')
+const { authenticateUser } = require('../middlewares/authentication');
 
 // POST request to /books to create a new book
 router.post('/books', authenticateUser, BookCtlr.createNewBook)
