@@ -66,5 +66,5 @@ helpers
   * authenticate book route (A user not login wont have access to the book route) 
   * role-based authentication
     * SEEDING
-      Seeding is when you input your some data into your application before hands. It means you do not need to create a route to create those document in your database, you just need to call a particular function.
+      <p>Seeding is when you input your some data into your application before hands. It means you do not need to create a route to create those document in your database, you just need to call a particular function.</p>
       
