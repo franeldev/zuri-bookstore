@@ -1,4 +1,4 @@
-const User = require('../models/users');
+const User = require('../models/user');
 const bcrypt =  require('bcryptjs');
 let password = "admin123"
 
