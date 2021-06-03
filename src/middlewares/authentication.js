@@ -19,10 +19,10 @@ exports.authenticateUser = (req, res, next) => {
   jwt.verify(token, secret, (err, decodedToken) => {
     if (err) return res.status(500).json({ err });
     if (!decodedToken) {
-      return res.status(500).json({ message: "invallid authorization" });
+      return res.status(401).json({ message: "invallid authorization token, please login" });
     }
     next();
-    
+
   })
 
 
