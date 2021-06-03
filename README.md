@@ -9,7 +9,7 @@ NodeJS Bookstore App
    * Delete Books
    * Search for Books
 
-**TODO**
+**TODO_DAY1**
 * Set up mongoose
 * Create schema
 * Create routes
@@ -23,7 +23,7 @@ NodeJS Bookstore App
 * description
 
 
-**TODO-PART2**
+**TODO-DAY2**
 * Create routes
 * Update Folder Structure
 * Install nodemon
@@ -42,7 +42,7 @@ middlewares
 utilities
 helpers
 
-**TODO-PART3**
+**TODO-DAY3**
 * Schema Validation
 * Search Feature
   
@@ -50,7 +50,7 @@ helpers
   
   Categories: fiction, non-fiction, comics, others
 
-  **TODO-PART4**
+  **TODO-DAY4**
   * Register route
     * Create a new user
     * Hash user's password 
@@ -69,3 +69,4 @@ helpers
       <p>Seeding is when you input your some data into your application before hands. It means you do not need to create a route to create those document in your database, you just need to call a particular function.</p>
       The reason we are using seeding is because we do not want to register people with admin account from the register route. We just want admin account to be created by default in our application
       
+ 
