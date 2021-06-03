@@ -14,18 +14,16 @@ exports.authenticateUser = (req, res, next) => {
   
   let token = splittedHeader[1];
 
-  // check if valid
+  // decode token & check if valid
 
   jwt.verify(token, secret, (err, decodedToken) => {
     if (err) return res.status(500).json({ err });
     if (!decodedToken) {
       return res.status(401).json({ message: "invallid authorization token, please login" });
     }
+    // and if valid, allow user to continue with request
     next();
 
   })
 
-
-  // decode token
-  // allow user to continue with request
 }
