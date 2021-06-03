@@ -3,15 +3,15 @@ const router = express.Router();
 const BookCtlr = require('../controllers/bookController');
 
 // POST request to /books to create a new book
-router.post('/books', BookCtlr.createNewBook)
+router.post('/books', authenticateUser, BookCtlr.createNewBook)
 // GET reuest to /books to fetch all books
-router.get('/books', BookCtlr.fetchBooks)
+router.get('/books', authenticateUser, BookCtlr.fetchBooks)
 // GET request to /books:id to fetch a single book
-router.get('/books/:id', BookCtlr.fetchSingleBook)
+router.get('/books/:id', authenticateUser, BookCtlr.fetchSingleBook)
 // PUT request to /books:id to update a single book
-router.put('/books/:id', BookCtlr.updateSingleBook)
+router.put('/books/:id', authenticateUser, BookCtlr.updateSingleBook)
 // DELETE request to /books:id too delete a single 
-router.delete('/books/:id', BookCtlr.deleteSingleBook)
+router.delete('/books/:id', authenticateUser, BookCtlr.deleteSingleBook)
 
 
 module.exports = router;
