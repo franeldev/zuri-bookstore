@@ -16,7 +16,7 @@ exports.createNewBook = (req, res) => {
 }
 
 exports.fetchBooks = (req, res) =>{
-  console.log(req.user);
+  console.log({ user: req.user });
   let conditions = {};
   if (req.query.category) {
       conditions.category = req.query.category
