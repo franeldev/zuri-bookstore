@@ -1,5 +1,4 @@
-const jwt = require('jsonwebtoken');
-const secret = "verySecureSECRET";
+const {decodeToken} = require('../services/jwtServices');
 
 exports.authenticateUser = (req, res, next) => {
   // check if there is an authorization login
@@ -15,18 +14,15 @@ exports.authenticateUser = (req, res, next) => {
   let token = splittedHeader[1];
 
   // decode token & check if valid
-
-  jwt.verify(token, secret, (err, decodedToken) => {
-    if (err) return res.status(500).json({ err });
+  let decodedToken = decodeToken(token);
     if (!decodedToken) {
         return res.status(401).json({ message: "invallid authorization token, please login" });
+    } else {
+        // and if valid, allow user to continue with request
+        console.log(decodedToken);
+        req.user = decodedToken;
+        next();
     }
-    // and if valid, allow user to continue with request
-    console.log(decodedToken);
-    req.user = decodedToken;
-    next();
-
-  })
 
 }
 
