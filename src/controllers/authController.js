@@ -1,8 +1,6 @@
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const secret = 'verySecureSECRET';
-const expiry = 3600;
+const { createToken } = require('../services/jwtServices');
 
 exports.registerNewUser = (req, res) => {
   // fetch user details from req body
@@ -39,23 +37,15 @@ exports.registerNewUser = (req, res) => {
               return res.status(500).json({ err })
             }
             // create jwt for user
-            jwt.sign(
-              {
-                id: newUser._id,
-                username: newUser.username,
-                firstName: newUser.firstName,
-                lastName: newUser.lastName,
-                role: newUser.role
-              }, secret, {expiresIn: expiry}, (err, token) => {
-                if(err) {
-                  return res.status(500).json({ err })
-                }
-                // send the token to user
-                return res.status(200).json({
-                  message: "user registration successful",
-                  token
-                })
-              })
+            let token = createToken(newUser);
+            if (!token) {
+                return res.status(500).json({ message: "sorry, we could not authenticate you, please login" });
+            }
+            // send the token to user
+            return res.status(200).json({
+                message: "user registration successful",
+                token
+            })
           })
         })
       })
@@ -79,23 +69,15 @@ exports.loginUser = (req, res) => {
       return res.status(401).json({ message: "incoorrect password" })
     }
     // create a token
-    jwt.sign({
-      id: foundUser._id,
-      username: foundUser.username,
-      firstName: foundUser.firstName,
-      lastName: foundUser.lastName,
-      role: foundUser.role
-    }, secret, {
-      expiresIn: expiry
-    }, (err, token) => {
-      if(err) {
-        return res.status(500).json({ err })
-      }
-      return res.status(200).json({
-        message: "user logged in",
-        token
-      })
+    let token = createToken(foundUser);
+    if (!token) {
+        return res.status(500).json({ message: "sorry, we could not authenticate you, please login" });
+    }
+    // send token to the user
+    return res.status(200).json({
+      message: "user logged in",
+      token
     })
   })
-  // send token to the user
+  
 }
