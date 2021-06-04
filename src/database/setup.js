@@ -1,13 +1,13 @@
 // SETUP MONGOOSE
 const mongoose = require('mongoose');
-const connectionString = 'mongodb://localhost:27017/zuribook';
+const connectionString = process.env.DB_URL;
 
 module.exports = () => {
   mongoose.connect(connectionString, {
     useNewUrlParser: true,
-    useCreateIndex: true,
     useUnifiedTopology: true,
-    useFindAndModify: false
+    useFindAndModify: false,
+    useCreateIndex: true
   }, (err) => {
     if (err) {
       console.log(err)
